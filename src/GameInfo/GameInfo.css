@@ -1,0 +1,21 @@
+.gameinfo-ratings {
+    padding-left:20px;
+}
+
+.gameinfo-text-rating {
+    font-size:15px !important;
+}
+.gameinfo-text-main {
+    font-size: 30px !important;
+    margin-left: auto !important;
+    margin-right:auto !important;
+}
+
+.gameinfo-text {
+    flex: 1;
+    font-size: 20px !important;
+    margin-right: 20px !important;
+    margin-left: 20px !important;
+}
+
+
