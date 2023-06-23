@@ -20,7 +20,7 @@ export const Game = styled(Card)({
     height: "200px",
     backgroundSize: "384px 100px",
     backgroundRepeat: "no-repeat",
-    border: "2px solid #2b2a33",
+    border: "1px solid #2b2a33",
     marginBottom:"10px",
     // backgroundSize: "cover",
     backgroundColor:"#1c1b22",
@@ -52,7 +52,7 @@ export const GenreButton = styled(Button)({
     lineHeight: 1,
     color: "white",
     width: "150px",
-    border: "2px solid #2b2a33",
+    border: "1px solid #2b2a33",
     textTransform:"none",
     height: "30px",
     '&:hover': {

@@ -18,7 +18,8 @@ export const Header = ({games}) => {
     <Box>
 
       <HeaderButtonGroup>
-      <Group onClick={()=>setFriendlist(true)} />
+        <div className="userprofile"><img src="/icon.png" className="userimg"></img></div>
+      <div className="flicon" onClick={()=>setFriendlist(true)}><Group /></div>
         {friendlist && (<><Friends games={games}/> <Blur onClick={()=>setFriendlist(false)}/></>)}
 
         {/* <HeaderButton className="header-btn">Shop</HeaderButton>

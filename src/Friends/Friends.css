@@ -65,14 +65,14 @@
     top:0;
     left:0;
     width:12%;
-    border-right: 2px solid #2b2a33;
+    border-right: 1px solid #2b2a33;
     background-color: #1c1b22;
 }
 
 .listicon {
     height:60px;
     margin-right: 15px;
-    border-right:2px solid #2b2a33;
+    border-right:1px solid #2b2a33;
     width:60px;
     background-color:#1c1b22;
 }
@@ -94,5 +94,5 @@
 
 .friendtooltip {
     display:none;
-    border:2px solid #2b2a33;
+    border:1px solid #2b2a33;
 }

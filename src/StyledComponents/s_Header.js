@@ -1,9 +1,10 @@
 import { Box, Button, ButtonGroup, styled } from "@mui/material";
 
 export const HeaderButtonGroup = styled(ButtonGroup)({
-    width:"30%",
-    height:"30px",
-    display:"flex"
+    width:"100vw",
+    height:"60px",
+    display:"flex",
+    paddingLeft:"15px"
 })
 
 export const HeaderButton = styled(Button)({

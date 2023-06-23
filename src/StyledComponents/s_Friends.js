@@ -4,9 +4,9 @@ export const ContextMenu = styled(Box)(({ top, left }) => ({
   position: "absolute",
   width: "125px",
   backgroundColor: "#1c1b22",
-  borderTop: "2px solid #2b2a33",
-  borderRight: "2px solid #2b2a33",
-  borderLeft: "2px solid #2b2a33",
+  borderTop: "1px solid #2b2a33",
+  borderRight: "1px solid #2b2a33",
+  borderLeft: "1px solid #2b2a33",
   borderRadius: "5px",
   boxSizing: "border-box",
   top: `${top}px`,
@@ -15,17 +15,21 @@ export const ContextMenu = styled(Box)(({ top, left }) => ({
 
 export const ContextMenuButton = styled(Button)({
   fontSize: "12px",
-  width:"120px",
   borderRadius:"0",
   textAlign: "center",
   marginLeft: "1px",
   marginBottom: "1px",
-  borderBottom: " 2px solid #2b2a33",
+  border:"none",
+  borderBottom: " 1px solid #2b2a33",
+  textTransform:"none",
+  width:"100%",
   color: "white",
   webkitTransition:"none",
   transition:"none",
   "&:hover": {
-    borderBottom:"1px solid white"
+    borderBottom:"1px solid #2b2a33",
+    borderRight:"none",
+    backgroundColor:"#2b2a33"
   }
 });
 
@@ -33,9 +37,9 @@ export const Tooltip = styled(Box)(({ top, left }) => ({
   position: "absolute",
   width: "215px",
   backgroundColor: "#1c1b22",
-  borderTop: "2px solid #2b2a33",
-  borderRight: "2px solid #2b2a33",
-  borderLeft: "2px solid #2b2a33",
+  borderTop: "1px solid #2b2a33",
+  borderRight: "1px solid #2b2a33",
+  borderLeft: "1px solid #2b2a33",
   padding:"5px",
   top: `${top}px`,
   left: `${left}px`,
@@ -74,7 +78,7 @@ export const Friendlist = styled(Box)({
   left:0,
   height:"100vh",
   width:"12%",
-  borderRight:"2px solid #2b2a33",
+  borderRight:"1px solid #2b2a33",
   backgroundColor:"#1c1b22",
 })
 
@@ -90,7 +94,7 @@ export const FriendOption = styled(Box)({
   alignItems:"center",
   width:"230px",
   fontSize:"20px",
-  borderBottom:"2px solid #2b2a33",
+  borderBottom:"1px solid #2b2a33",
   "&:hover": {
     // borderRight:"3px solid #474747",
     // borderBottom:"3px solid #474747",
