@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Container, Grid, Typography, styled } from '@mui/material';
+import { Box, Button, ButtonGroup, Card, CardContent, Container, Grid, Typography, styled } from '@mui/material';
 
 export const GameContainer = styled(Container)({
     width:"90vw",
@@ -22,6 +22,7 @@ export const Game = styled(Card)({
     backgroundRepeat: "no-repeat",
     border: "1px solid #2b2a33",
     marginBottom:"10px",
+    transition:"all 500ms",
     // backgroundSize: "cover",
     backgroundColor:"#1c1b22",
     textAlign:"center",
@@ -55,9 +56,14 @@ export const GenreButton = styled(Button)({
     border: "1px solid #2b2a33",
     textTransform:"none",
     height: "30px",
+    transition:"all 500ms",
     '&:hover': {
-        border:"2px solid #2b2a33",
-        borderRight:"2px solid #2b2a33 !important",
         backgroundColor: "#2b2a33"
     }
   });
+
+  export const GenreButtonGroup = styled(ButtonGroup)({
+    display: "flex",
+    width:"90%",
+    float:"right",
+  })

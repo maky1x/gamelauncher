@@ -1,6 +1,6 @@
 import { Box, Button, ButtonGroup, styled } from "@mui/material";
 
-export const HeaderButtonGroup = styled(ButtonGroup)({
+export const HeaderGroup = styled(ButtonGroup)({
     width:"100vw",
     height:"60px",
     display:"flex",
@@ -19,4 +19,23 @@ export const TitleBarBox = styled(Box)({
     position: "absolute",
     top:"0px",
     right:"5px"
+})
+
+export const FriendsIcon = styled("div")({
+    backgroundColor: "#1c1b22",
+    border:"1px solid #2b2a33",
+    width:"3%",
+    height:"25px",
+    alignItems: "center",
+    marginTop: "auto",
+    marginBottom:"auto",
+    marginLeft:"15px",
+    display:"flex",
+    justifyContent: "center",
+    borderRadius: "20px",
+    cursor:"pointer",
+    transition:"all 500ms",
+    "&:hover": {
+        backgroundColor:"#2b2a33"
+    }
 })

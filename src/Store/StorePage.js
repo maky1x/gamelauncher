@@ -1,21 +1,18 @@
-import { ButtonGroup, ThemeProvider } from "@mui/material";
-import "./StorePage.css";
+import { ThemeProvider } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { myTheme } from "../Theme/theme";
 import { Sidebar } from "../Sidebar/Sidebar";
 import axios from "axios";
 import { Header } from "../Header/Header";
 import { GameCard } from "../api/GameCard";
-import { GenreButton } from "../StyledComponents/s_GameCard";
-
-var selectedGenres = [];
+import { GenreButton, GenreButtonGroup } from "../StyledComponents/s_GameCard";
 
 export const StorePage = () => {
   const API_KEY = "07469a842fe048668650c087c85b15f9";
   const [sidebarGames, setSidebarGames] = useState([]);
   const [games, setGames] = useState([]);
   const [genres, setGenres] = useState([]);
-  const [selGenresS, setSelGenresS] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
   useEffect(() => {
     axios.get(`https://rawg.io/api/genres?token&key=${API_KEY}`).then((res) => {
@@ -24,8 +21,7 @@ export const StorePage = () => {
   }, []);
 
   useEffect(() => {
-    console.log("p");
-    if (selGenresS.length === 0) {
+    if (selectedGenres.length === 0) {
       axios
         .get(`https://rawg.io/api/games?token&key=${API_KEY}`)
         .then((res) => {
@@ -36,11 +32,8 @@ export const StorePage = () => {
           console.log(err);
         });
     } else {
-      console.log("else");
       axios
-        .get(
-          `https://rawg.io/api/games?token&genres=${selGenresS}&key=${API_KEY}`
-        )
+        .get(`https://rawg.io/api/games?token&genres=${selectedGenres}&key=${API_KEY}`)
         .then((res) => {
           setGames(res.data.results);
         })
@@ -48,37 +41,29 @@ export const StorePage = () => {
           console.log(err);
         });
     }
-  }, [selGenresS]);
+  }, [selectedGenres]);
 
   const handleGenre = (e, id) => {
     e.target.classList.toggle("genre-btn");
     let found = false;
-    console.log(`check ${selectedGenres}`);
     if (selectedGenres.includes(id)) found = true;
     if (found) {
-      selectedGenres = selectedGenres.filter((genre) => genre !== id);
-      console.log(`pop ${selectedGenres}`);
-      setSelGenresS(selectedGenres);
+      setSelectedGenres((current)=>current.filter((genre) => genre !== id))
     } else {
-      selectedGenres.push(id);
-      console.log(`push ${selectedGenres}`);
-      setSelGenresS(selectedGenres);
+      setSelectedGenres((current)=> [...current, id])
     }
   };
-
+  
   return (
     <ThemeProvider theme={myTheme}>
-      <Header games={sidebarGames}/>
-      <ButtonGroup className="btn-grp-genre">
+      <Header games={sidebarGames} />
+      <GenreButtonGroup>
         {genres.map((genre) => (
-          <GenreButton
-            key={genre.id}
-            onClick={(e) => handleGenre(e, genre.id)}
-          >
+          <GenreButton key={genre.id} onClick={(e) => handleGenre(e, genre.id)}>
             {genre.name}
           </GenreButton>
         ))}
-      </ButtonGroup>
+      </GenreButtonGroup>
       <Sidebar games={sidebarGames} />
       <GameCard games={games} sidebarGames={sidebarGames} />
     </ThemeProvider>

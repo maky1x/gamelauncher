@@ -1,25 +1,33 @@
-import { Box, List, ListItem, Typography } from '@mui/material'
-import React from 'react'
-import "./Sidebar.css"
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  SidebarItem,
+  SidebarList,
+  SidebarText,
+} from "../StyledComponents/s_Sidebar";
 
-export const Sidebar = ({games}) => {
+export const Sidebar = ({ games, page }) => {
+  const [topPx, setTopPx] = useState("");
+  useEffect(() => {
+    if (page === "games") 
+      setTopPx("12vh");
+  }, []);
+
   return (
-    <List className="sidebar-list">
-        {games.map((game) => (
-          <Link to='/gameinfo' state={{
-            games: games,
-            selGameId: game.id
-          }}>
-          <ListItem className="sidebar-listitem">
-              <Box
-                sx={{ backgroundImage: `url(${game.background_image})` }}
-                className="sidebar-img"
-              ></Box>
-              <Typography className="sidebar-text">{game.name}</Typography>
-          </ListItem>
-          </Link>
-        ))}
-    </List>
-  )
-}
+    <SidebarList sx={{ top: topPx }}>
+      {games && games.map((game) => (
+        <Link
+          to="/gameinfo"
+          state={{
+            sidebarGames: games,
+            selGameId: game.id,
+          }}
+        >
+          <SidebarItem>
+            <SidebarText>{game.name}</SidebarText>
+          </SidebarItem>
+        </Link>
+      ))}
+    </SidebarList>
+  );
+};
