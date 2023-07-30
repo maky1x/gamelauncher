@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Header } from "../Header/Header";
-import { Sidebar } from "../Sidebar/Sidebar";
 import axios from "axios";
 import "../Friends/Animations.css";
 import {
@@ -22,7 +20,6 @@ export const GameInfo = () => {
   const [tempStores, setTempStores] = useState([]);
   const API_KEY = `07469a842fe048668650c087c85b15f9`;
   const location = useLocation();
-  const sidebarGames = location.state.sidebarGames;
   const selGameId = location.state.selGameId;
 
   useEffect(() => {
@@ -32,7 +29,7 @@ export const GameInfo = () => {
         setGameInfoAPI(res.data);
         console.log(res.data);
       });
-  }, []);
+  }, [selGameId, API_KEY]);
 
   useEffect(() => {
     let tempArr = [];
@@ -65,7 +62,7 @@ export const GameInfo = () => {
         console.log(tempArr);
         setGameStores(tempArr);
       });
-  }, [gameInfoAPI]);
+  }, [gameInfoAPI, tempStores, API_KEY]);
 
   useEffect(() => {
     let tempObj = {};
@@ -83,7 +80,7 @@ export const GameInfo = () => {
       }
     }
     setAllStores(tempObj);
-  }, [gameStores]);
+  }, [gameStores, gameInfoAPI]);
 
   useEffect(() => {
     console.log(allStores);
@@ -91,8 +88,6 @@ export const GameInfo = () => {
 
   return (
     <>
-      <Header games={sidebarGames} />
-      <Sidebar games={sidebarGames} page="games" />
       <Link to="/">
         <BackButton>Back</BackButton>
       </Link>
