@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Sidebar } from "../Sidebar/Sidebar";
-import { GameInfo } from "../GameInfo/GameInfo";
+import GameInfo from "../GameInfo";
 import { GameCardsContainer } from "../api/GameCardsContainer";
 import { GenreButton, GenreButtonGroup } from "../StyledComponents/s_GameCard";
 import useApplication from "../Hooks/useApplication";
