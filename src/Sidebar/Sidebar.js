@@ -13,6 +13,8 @@ export const Sidebar = ({ games, page }) => {
       setTopPx("12vh");
   }, []);
 
+  //aaaaabbbbb
+
   return (
     <SidebarList sx={{ top: topPx }}>
       {games && games.map((game) => (
