@@ -8,10 +8,11 @@ import {
 
 export const Sidebar = ({ games, page }) => {
   const [topPx, setTopPx] = useState("");
+
   useEffect(() => {
-    if (page === "games") 
+    if (page === "games")
       setTopPx("12vh");
-  }, []);
+  }, [page]);
 
   //aaaaabbbbb
 
@@ -19,7 +20,8 @@ export const Sidebar = ({ games, page }) => {
     <SidebarList sx={{ top: topPx }}>
       {games && games.map((game) => (
         <Link
-          to="/gameinfo"
+          key={game.id}
+          to={`/games/${game.id}`}
           state={{
             sidebarGames: games,
             selGameId: game.id,

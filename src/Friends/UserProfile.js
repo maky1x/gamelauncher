@@ -7,30 +7,30 @@ import {
   UserPopup,
   UserProfileCon,
 } from "../StyledComponents/s_Friends";
-import {ReferenceDataContext} from "../App/ContextProvider"
+import { ReferenceDataContext } from "../Context/ContextProvider";
 import { TextField } from "@mui/material";
 
-export const UserProfile = ({page}) => {
+export const UserProfile = ({ page }) => {
   const [userPopup, setUserPopup] = useState(false);
   const [userProfile, setUserProfile] = useState(false);
   const [animation, setAnimation] = useState(false);
   const [animationPop, setAnimationPop] = useState(false);
-  const {username, setUsername} = useContext(ReferenceDataContext)
   const [newName, setNewName] = useState("");
   const [sxStyle, setSxStyle] = useState({});
+  const { username, setUsername } = useContext(ReferenceDataContext);
 
-  useEffect(()=> {
+  useEffect(() => {
     setUsername("maky1x");
-    if(page==="friends") {
+    if (page === "friends") {
       setSxStyle({
-        width:"100%",
-        height:"100%",
+        width: "100%",
+        height: "100%",
         "&:hover": {
-          backgroundColor:"#1c1b22"
+          backgroundColor: "#1c1b22"
         }
       })
     }
-  }, [])
+  }, [page, setUsername]);
 
   const handleProfileClick = () => {
     if (userProfile) {
@@ -44,7 +44,7 @@ export const UserProfile = ({page}) => {
 
   const handleProfileChange = () => {
     setUsername(newName);
-  }
+  };
 
   const handleAnimation = () => {
     if (!animation) return { animation: "tooltip-in 0.5s" };
@@ -60,7 +60,7 @@ export const UserProfile = ({page}) => {
     setAnimationPop(true);
     setTimeout(() => setUserPopup(false), 200);
     setTimeout(() => setAnimationPop(false), 200);
-  }
+  };
 
   const handleBlurClick = (event) => {
     event.preventDefault();
@@ -74,7 +74,7 @@ export const UserProfile = ({page}) => {
 
   return (
     <>
-      <UserProfileCon sx={sxStyle} onClick={page!=="friends" ? ()=>handleProfileClick() : ()=>""}>
+      <UserProfileCon sx={sxStyle} onClick={page !== "friends" ? () => handleProfileClick() : () => ""}>
         <ProfileIcon src="/icon.png" alt="" />
         {username}
       </UserProfileCon>
@@ -88,8 +88,8 @@ export const UserProfile = ({page}) => {
           <Blur onClick={(e) => handleBlurClick(e)} />
           <UserPopup sx={handleTooltipAnimation()}>
             <img src="/icon.png" alt="" />
-            <TextField variant="standard" placeholder={username} value={newName} onChange={(e)=>setNewName(e.target.value)}></TextField>
-            <PopUpButton onClick={()=>handleProfileChange()}>Save changes</PopUpButton>
+            <TextField variant="standard" placeholder={username} value={newName} onChange={(e) => setNewName(e.target.value)}></TextField>
+            <PopUpButton onClick={() => handleProfileChange()}>Save changes</PopUpButton>
           </UserPopup>
         </>
       )}

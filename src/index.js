@@ -3,18 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App/App";
 import reportWebVitals from "./App/reportWebVitals";
-import { ThemeProvider } from "@mui/material";
-import { myTheme } from "./Theme/theme";
-import { ContextProvider } from "./App/ContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <ThemeProvider theme={myTheme}>
-    <ContextProvider>
-      <App />
-    </ContextProvider>
-  </ThemeProvider>
-);
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -18,7 +18,7 @@ import {
 import { FriendTooltip } from "./FriendTooltip";
 import { friends } from "./friendsvar";
 import { TextField } from "@mui/material";
-import { ReferenceDataContext } from "../App/ContextProvider";
+import { ReferenceDataContext } from "../Context/ContextProvider";
 
 export const Friends = ({ games }) => {
   const [clicked, setClicked] = useState(false);
@@ -27,7 +27,7 @@ export const Friends = ({ games }) => {
   const [userPopup, setUserPopup] = useState(false);
   const [animation, setAnimation] = useState(false);
   const [clickedFriendId, setClickedFriendId] = useState(0);
-  const {username} = useContext(ReferenceDataContext)
+  const { username } = useContext(ReferenceDataContext);
 
   useEffect(() => {
     const handleClick = () => {
@@ -55,7 +55,7 @@ export const Friends = ({ games }) => {
     const name = document.getElementById("friend-name").value;
     // const image = "something" <- needs work
     const newFriend = {
-      name:name,
+      name: name,
       image: "/icon.png" // dummy image for now
     };
     friends.push(newFriend);
@@ -109,7 +109,7 @@ export const Friends = ({ games }) => {
     <>
       <FriendList>
         <ListProfile>
-          <ListIcon src="./icon.png" alt=""/><FriendName>{username}</FriendName>
+          <ListIcon src="./icon.png" alt="" /><FriendName>{username}</FriendName>
           {/* <UserProfile page="friends"/> */}
         </ListProfile>
         <AddFriend onClick={() => setUserPopup(true)}>Add a friend</AddFriend>
@@ -131,7 +131,7 @@ export const Friends = ({ games }) => {
             <Tooltip
               className="friend-tooltip"
               top={hoverPoints.y}
-              left={hoverPoints.x} 
+              left={hoverPoints.x}
             >
               <FriendTooltip index={index} games={games} />
             </Tooltip>
@@ -139,7 +139,7 @@ export const Friends = ({ games }) => {
         ))}
         {clicked && (
           <ContextMenu top={points.y} left={points.x}>
-            <ContextMenuButton onClick={()=>handleDelete()}>Delete friend</ContextMenuButton>{" "}
+            <ContextMenuButton onClick={() => handleDelete()}>Delete friend</ContextMenuButton>{" "}
           </ContextMenu>
         )}
       </FriendList>
@@ -149,7 +149,7 @@ export const Friends = ({ games }) => {
           <UserPopup sx={handleAnimation()}>
             <img src="/icon.png" alt="" />
             <TextField variant="standard" placeholder="Name" id="friend-name"></TextField>
-            <PopUpButton onClick={()=>handleFriendAdd()}>Add</PopUpButton>
+            <PopUpButton onClick={() => handleFriendAdd()}>Add</PopUpButton>
           </UserPopup>
         </>
       )}

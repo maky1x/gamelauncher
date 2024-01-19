@@ -1,20 +1,20 @@
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "@mui/material";
+import { myTheme } from "../Theme/theme";
+import { ContextProvider } from "../Context/ContextProvider";
 import './App.css';
-import { StorePage } from '../Store/StorePage';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { GameInfo } from '../GameInfo/GameInfo';
+import { StorePage } from "../Store/StorePage";
 
 function App() {
-  // da game
-
   return (
-    <>
+    <ThemeProvider theme={myTheme}>
       <Router>
-          <Routes>
-            <Route path="/" element={<StorePage />} />
-            <Route path="/gameinfo" element={<GameInfo />} />
-          </Routes>
-        </Router>
-    </>
+        <ContextProvider>
+          <StorePage />
+        </ContextProvider>
+      </Router>
+    </ThemeProvider >
   );
 }
 
